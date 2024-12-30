@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppColor {
   static const Color primaryColor = Color.fromARGB(255, 218, 250, 37);
-  static const Color backgroundColor = Color.fromARGB(255, 13, 6, 29);
+  static const Color backgroundColor = Color.fromARGB(255, 1, 3, 17);
   static const Color textColor = Color.fromARGB(255, 255, 255, 255);
   static const Color texetErrorColor = Color.fromARGB(255, 8, 8, 8);
   static const Color textButtonColor = Color(0xFFE50914);

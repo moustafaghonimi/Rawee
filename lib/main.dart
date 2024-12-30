@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rawee/Core/utils/app_color.dart';
 
 import 'Core/routes/app_router.dart';
 
@@ -13,6 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppColor.backgroundColor,
+      ),
       routerConfig: router,
       debugShowCheckedModeBanner: false,
       title: 'Rawee',
