@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rawee/Core/utils/app_assets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text("Rawee"),
           ),
-          body: Center(child: Text("Rawee")),
+          body: Center(child: Image.asset(Assets.assetsImagesSplachLogo)),
         ));
   }
 }
