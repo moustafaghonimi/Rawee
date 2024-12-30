@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rawee/Core/utils/app_assets.dart';
+
+import 'Core/routes/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +12,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Rawee',
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text("Rawee"),
-          ),
-          body: Center(child: Image.asset(Assets.assetsImagesSplachLogo)),
-        ));
+    return MaterialApp.router(
+      routerConfig: router,
+      debugShowCheckedModeBanner: false,
+      title: 'Rawee',
+    );
   }
 }
