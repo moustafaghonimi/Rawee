@@ -33,4 +33,5 @@ class Assets {
   /// Assets for assetsImagesSplachLogo
   /// assets/images/splach_logo.jpeg
   static const String assetsImagesSplachLogo = "assets/images/splach_logo.jpeg";
+  static const String signUpImage = "assets/images/sign_up_image.png";
 }

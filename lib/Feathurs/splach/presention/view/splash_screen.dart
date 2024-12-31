@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rawee/Core/database/cache/cache_helper.dart';
 import 'package:rawee/Core/routes/custem_navigation_router.dart';
+import 'package:rawee/Core/services/service_locator_get_it.dart';
 import 'package:rawee/Core/utils/app_assets.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,7 +14,15 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    dalayedNavigator(context);
+    bool isFirstTime = getIt<CacheHelper>().getData(
+          key: 'isFirstTime',
+        ) ??
+        false;
+    if (isFirstTime == true) {
+      dalayedNavigator(context, 'SignUpView');
+    } else {
+      dalayedNavigator(context, 'onBording');
+    }
     super.initState();
   }
 
@@ -37,8 +47,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-void dalayedNavigator(context) {
+void dalayedNavigator(context, String path) {
   Future.delayed(const Duration(seconds: 2), () {
-    custemNavigationRouterReplacement(context, 'OnBording');
+    custemNavigationRouterReplacement(context, path);
   });
 }

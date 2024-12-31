@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rawee/Core/database/cache/cache_helper.dart';
+import 'package:rawee/Core/services/service_locator_get_it.dart';
 
 import '../../../../Core/routes/custem_navigation_router.dart';
 import '../../../../Core/widgets/custme_btn.dart';
@@ -21,18 +23,21 @@ class GetBtnOnBording extends StatelessWidget {
       return Column(
         children: [
           CustmeBtn(
-            btnName: AppStrings.loginNow,
+            btnName: AppStrings.createAccount,
             paddingSize: MediaQuery.of(context).size.width * 0.25,
             onPressed: () {
+              getIt<CacheHelper>().saveData(key: 'isFirstTime', value: true);
+
               custemNavigationRouterReplacement(context, 'SignUpView');
             },
           ),
           TextButton(
             onPressed: () {
+              getIt<CacheHelper>().saveData(key: 'isFirstTime', value: true);
               custemNavigationRouterReplacement(context, 'SignIn');
             },
             child: Text(
-              AppStrings.signIn,
+              AppStrings.loginNow,
               style: AppTextTheme.textStyleWhite14.copyWith(
                 fontSize: 20,
               ),
