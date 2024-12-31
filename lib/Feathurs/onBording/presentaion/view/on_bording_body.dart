@@ -1,36 +1,56 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:rawee/Core/utils/Text_them.dart';
-import 'package:rawee/Core/utils/app_assets.dart';
 
+import 'package:rawee/Core/utils/text_them.dart';
+import 'package:rawee/Core/widgets/space.dart';
+
+import '../../data/models/on_bording_model.dart';
 import 'smooth_page_indicator_onbording.dart';
 
 class OnBordingBody extends StatelessWidget {
-  OnBordingBody({super.key});
+  const OnBordingBody(
+      {super.key, required this.controller, this.onPagedChange});
 
-  final PageController controller = PageController();
+  final PageController controller;
+  final void Function(int)? onPagedChange;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.7,
       child: PageView.builder(
+        onPageChanged: onPagedChange,
         controller: controller,
-        itemCount: 3,
+        itemCount: onBordingData.length,
         itemBuilder: (context, index) {
           return Column(
             children: [
-              Image.asset(Assets.assetsImagesOnBording1),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.4,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                        image: AssetImage(onBordingData[index].image),
+                        fit: BoxFit.fill)),
+              ),
               Text(
-                'Explore the history world of Rawee',
+                onBordingData[index].title,
                 style: AppTextTheme.onBordingBodyTitelTextStyle25,
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               Text(
-                'Explore the history world of Rawee',
+                onBordingData[index].subTitle,
                 style: AppTextTheme.onBordingBodySubTitelTextStyle14,
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-              SizedBox(
-                height: 20,
+              Space(
+                h: MediaQuery.of(context).size.height * 0.02,
+                w: 0,
               ),
               SmoothPageIndicatorOnBording(controller: controller),
             ],

@@ -1,33 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:rawee/Core/utils/app_strings.dart';
+
+import 'package:rawee/Core/widgets/space.dart';
 import 'package:rawee/Feathurs/onBording/presentaion/view/on_bording_body.dart';
 import 'package:rawee/Feathurs/onBording/presentaion/view/skip_btn.dart';
+import 'package:rawee/Feathurs/onBording/presentaion/widget/get_btn_onbording.dart';
 
-import '../../../../Core/widgets/custme_btn.dart';
-
-class OnBording extends StatelessWidget {
+class OnBording extends StatefulWidget {
   const OnBording({super.key});
 
+  @override
+  State<OnBording> createState() => _OnBordingState();
+}
+
+class _OnBordingState extends State<OnBording> {
+  final PageController _controller = PageController(initialPage: 0);
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
+        padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 6.0),
+        child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SkipBtn(),
+            SkipBtn(),
+            OnBordingBody(
+              controller: _controller,
+              onPagedChange: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
             ),
-            OnBordingBody(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustmeBtn(
-                btnName: AppStrings.next,
-                width: MediaQuery.of(context).size.width * 0.5,
-                height: MediaQuery.of(context).size.height * 0.06,
-              ),
+            Space(
+              h: MediaQuery.of(context).size.height * 0.05,
+              w: 0,
+            ),
+            GetBtnOnBording(
+              currentIndex: currentIndex,
+              controller: _controller,
             ),
           ],
         ),

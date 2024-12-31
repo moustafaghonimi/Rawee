@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:rawee/Core/routes/custemVavigationRouter.dart';
+import 'package:rawee/Core/routes/custem_navigation_router.dart';
 import 'package:rawee/Core/utils/app_assets.dart';
-import 'package:rawee/Core/utils/app_color.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -41,6 +39,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
 void dalayedNavigator(context) {
   Future.delayed(const Duration(seconds: 2), () {
-    custemVavigationRouter(context, 'OnBording');
+    custemNavigationRouterReplacement(context, 'OnBording');
   });
 }

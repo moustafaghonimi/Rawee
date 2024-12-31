@@ -3,7 +3,8 @@ import 'package:rawee/Core/utils/app_color.dart';
 
 import 'Core/routes/app_router.dart';
 
-void main() {
+void main() async {
+  await Future.delayed(Duration(seconds: 1));
   runApp(const MyApp());
 }
 

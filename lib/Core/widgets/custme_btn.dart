@@ -1,31 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:rawee/Core/utils/Text_them.dart';
+import 'package:rawee/Core/utils/text_them.dart';
 import 'package:rawee/Core/utils/app_color.dart';
 
 class CustmeBtn extends StatelessWidget {
-  const CustmeBtn(
-      {super.key,
-      required this.btnName,
-      required this.width,
-      required this.height});
+  const CustmeBtn({
+    super.key,
+    required this.btnName,
+    this.paddingSize = 8.0,
+    this.width = 200,
+    this.height = 50.0,
+    this.onPressed,
+  });
   final String btnName;
+  final double paddingSize;
   final double width;
   final double height;
+  final VoidCallback? onPressed;
+
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-        fixedSize: Size(width, height),
-        backgroundColor: AppColor.primaryColor,
-        foregroundColor: AppColor.hoverColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: paddingSize),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(width, height),
+          backgroundColor: AppColor.primaryColor,
+          foregroundColor: AppColor.hoverColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
         ),
-      ),
-      child: Text(
-        btnName,
-        style: AppTextTheme.textStyleblack18,
+        child: Text(
+          btnName,
+          style: AppTextTheme.textStyleblack18,
+        ),
       ),
     );
   }

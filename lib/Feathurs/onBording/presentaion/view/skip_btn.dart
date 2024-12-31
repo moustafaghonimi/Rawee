@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rawee/Core/utils/Text_them.dart';
+import 'package:rawee/Core/routes/custem_navigation_router.dart';
+import 'package:rawee/Core/utils/text_them.dart';
 import 'package:rawee/Core/utils/app_strings.dart';
 
 class SkipBtn extends StatelessWidget {
@@ -11,7 +12,7 @@ class SkipBtn extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: TextButton(
         onPressed: () {
-          // custemVavigationRouter(context, 'Home');
+          custemNavigationRouterReplacement(context, 'SignUpView');
         },
         child: Text(
           AppStrings.skip,
